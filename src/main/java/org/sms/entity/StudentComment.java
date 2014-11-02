@@ -3,20 +3,28 @@ package org.sms.entity;
 import java.util.Date;
 
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-public class NoticeBoard {
-	@Id
-	@GeneratedValue
-	private int id;
-	private String notice;
+
+
+@Entity
+public class StudentComment {
 	
+	private int studentId;
+
+	
+	private String commentBody;	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "published_date", columnDefinition="TIMESTAMP")
 	private Date publishedDate;
+	
+	@ManyToOne
+	@JoinColumn(name = "StudentPost_Id")
+	private StudentPost studentPost;
 	
 
 }

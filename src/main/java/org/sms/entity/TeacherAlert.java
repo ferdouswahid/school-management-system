@@ -3,17 +3,23 @@ package org.sms.entity;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-public class ExamRoutine {
-	
+
+@Entity
+public class TeacherAlert {
 	private int id;
 	
-	private String examName;
+	private int userId;
+	
+	private int teacherId;	
+	
+	private String alertDescription;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(columnDefinition="TIMESTAMP")
-	private Date examTime;
-
+	private Date alertTime;
+	
 }

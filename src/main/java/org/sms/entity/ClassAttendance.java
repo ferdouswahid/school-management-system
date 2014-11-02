@@ -11,13 +11,13 @@ import javax.persistence.TemporalType;
 @Entity
 public class ClassAttendance {
 	
-	private int classId;
+	private int classInfoId;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(columnDefinition="TIMESTAMP")
 	private Date classDate;
 	
-	private List listOfPresentStudents;
+	private List listOfPresentStudentsId;
 	
 	
 
