@@ -1,5 +1,6 @@
 package org.sms.entity;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -8,13 +9,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.MappedSuperclass;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.sms.annotation.UniqueUsername;
 
-@Entity
-public class Users {
+@MappedSuperclass
+abstract class Users {
 
 	@Id
 	@GeneratedValue
@@ -29,15 +33,19 @@ public class Users {
 	@Email(message = "Invalid email address!")
 	private String email;
 
-	@Size(min = 5, message = "Name must be at least 5 characters!")
+	@Size(min = 5, message = "Password must be at least 5 characters!")
 	private String password;
 
 	private int enabled;
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(columnDefinition="TIMESTAMP")//columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+	private Date dateOfBirth;
+	
+	private String bloodGroup;	
+	
 
-	@ManyToMany
-	@JoinTable
-	private List<Role> roles;
-
+	
 	public int getEnabled() {
 		return enabled;
 	}
@@ -46,14 +54,7 @@ public class Users {
 		this.enabled = enabled;
 	}
 
-
-	public List<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(List<Role> roles) {
-		this.roles = roles;
-	}
+	
 
 	public Integer getId() {
 		return id;
@@ -86,5 +87,23 @@ public class Users {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public String getBloodGroup() {
+		return bloodGroup;
+	}
+
+	public void setBloodGroup(String bloodGroup) {
+		this.bloodGroup = bloodGroup;
+	}
+	
+	
 
 }

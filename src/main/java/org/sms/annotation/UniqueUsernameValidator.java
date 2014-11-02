@@ -3,13 +3,13 @@ package org.sms.annotation;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import org.sms.repository.UserRepository;
+import org.sms.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 public class UniqueUsernameValidator implements ConstraintValidator<UniqueUsername, String> {
 	
 	@Autowired
-	private UserRepository userRepository;
+	private StudentRepository studentRepository;
 
 	@Override
 	public void initialize(UniqueUsername constraintAnnotation) {
@@ -17,10 +17,10 @@ public class UniqueUsernameValidator implements ConstraintValidator<UniqueUserna
 
 	@Override
 	public boolean isValid(String username, ConstraintValidatorContext context) {
-		if(userRepository == null) {
+		if(studentRepository == null) {
 			return true;
 		}
-		return userRepository.findByName(username) == null;
+		return studentRepository.findByName(username) == null;
 	}
 
 }

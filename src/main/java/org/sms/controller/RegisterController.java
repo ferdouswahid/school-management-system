@@ -2,7 +2,7 @@ package org.sms.controller;
 
 import javax.validation.Valid;
 
-import org.sms.entity.Users;
+import org.sms.entity.Student;
 import org.sms.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/register")
 public class RegisterController {
 
-	@Autowired
+	/*@Autowired
 	private UserService userService;
 
 	@ModelAttribute("user")
@@ -40,7 +40,7 @@ public class RegisterController {
 		
 		return "redirect:/register.html?success=true";
 	}
-	
+	*/
 	/*@RequestMapping("/available")
 	@ResponseBody
 	public String available(@RequestParam String username) {
